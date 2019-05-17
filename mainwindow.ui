@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1034</width>
+    <height>648</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>车体外观_嵌入式UDP陪测软件_V1.0</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/*QComboBox*/
+
+QComboBox {
+border: 1px solid rgb(111, 156, 207);
+border-radius: 3px;
+padding: 1px 18px 1px 3px;
+min-width: 9em;
+max-width:9em;
+}
+QComboBox::drop-down {
+subcontrol-origin: padding;
+subcontrol-position: top right;
+width: 15px;
+border-left-width: 1px;
+border-left-color: darkgray;
+border-left-style: solid;
+border-top-right-radius: 3px;
+border-bottom-right-radius: 3px;
+}
+QComboBox QAbstractItemView {
+border: 2px solid darkgray;
+selection-background-color: lightgray;
+}
+
+/*QLineEdit*/
+
+QLineEdit{
+min-width:50px;
+max-width:50px;
+border: 2px solid gray;
+border-radius: 10px;
+padding: 0 8px;
+background: yellow;
+selection-background-color: darkgray;
+}
+
+/*QPushButton*/
+
+QPushButton{
+min-width:75px;
+max-width:75px;
+min-height:20px;
+border:1px solid black;
+border-radius:5px;
+}
+QPushButton:hover{
+background-color: #333333;
+border-color: #444444;
+color:rgb(255,255,255);
+}
+QPushButton:pressed{
+background-color: #111111;
+border-color: #333333;
+color: yellow;
+}
+
+/*QTabWidget*/
+QTabWidget::tab-bar {
+alignment: left;
+}
+QTabWidget::pane {
+border-top: 2px solid #C2C7CB;
+}
+QTabBar::tab:selected {
+margin-top:0px;
+border-color: #9B9B9B;
+border-bottom-color: #C2C7CB;
+}
+QTabBar::tab:!selected {
+margin-top: 2px;
+}
+QTabBar::tab {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+border: 2px solid #C4C4C3;
+border-bottom-color: #C2C7CB;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+min-width: 8ex;
+padding: 2px;
+}
+
+/*QWidget*/
+QWidget{
+background-color:#F5F5F5;
+}
+
+/*QGroupBox*/
+QGroupBox {
+border: 2px solid gray;
+border-radius: 5px;
+margin-top: 1ex;
+}
+QGroupBox::title {
+subcontrol-origin: margin;
+subcontrol-position: top center;
+padding: 0 3px;
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+stop: 0 #FF0ECE, stop: 1 #FFFFFF);
+}
+
+/*QCheckBox*/
+
+QCheckBox::indicator{
+width: 13px;
+height: 13px;
+background-color: #00FF00;
+border: 1px solid #000000;
+border-radius:4px;
+}
+QCheckBox::indicator::checked{
+background-color: qradialgradient(cx:0.5, cy:0.5, fx:0.25, fy:0.15,
+radius:0.3, stop:0 #FF0000, stop:1 #FFFFFF);
+}</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>数据发送</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>发送列表</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton">
+              <property name="text">
+               <string>添加帧</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_2">
+              <property name="text">
+               <string>删除帧</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_3">
+              <property name="text">
+               <string>开始发送</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_4">
+              <property name="text">
+               <string>停止发送</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_5">
+              <property name="text">
+               <string>清空发送</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="tableWidget">
+            <column>
+             <property name="text">
+              <string>报文类型</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>发送周期</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>数据</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>发送结果</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox">
+              <property name="text">
+               <string>显示</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="plainTextEdit"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>数据接收</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,0,0,0,1">
+          <item>
+           <widget class="QCheckBox" name="checkBox_4">
+            <property name="text">
+             <string>显示</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>筛选报文类型</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_3">
+            <item>
+             <property name="text">
+              <string>CAN报文转发</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>控制主机信息报文应答</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>控制主机命令报文应答</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>所有</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_11">
+            <property name="text">
+             <string>清空接收结果</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="plainTextEdit_2"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1034</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
